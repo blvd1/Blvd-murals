@@ -12,6 +12,11 @@ nav{position:relative}.event-hero{padding:70px 0 45px}.event-hero h1{font-size:c
 .experience-zoom{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;cursor:zoom-in;position:relative;text-align:left}
 .experience-zoom img{transition:transform .22s ease,filter .22s ease}
 .experience-zoom:hover img{transform:scale(1.012);filter:brightness(1.04)}
+.take-home-composite{position:relative;display:block;width:100%;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--line);background:#111}
+.take-home-composite img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;border:0}
+.take-home-composite .take-home-patch{clip-path:polygon(20.57% 13.18%,22.59% 13.09%,24.09% 13.67%,24.41% 14.26%,24.09% 14.75%,22.85% 15.23%,21.09% 15.33%,20.12% 14.75%,19.79% 14.16%,20.05% 13.57%)}
+.experience-zoom:hover .take-home-composite img{transform:none;filter:none}
+.image-lightbox .take-home-composite{width:min(94vw,132vh);max-width:94vw;max-height:88vh;aspect-ratio:3/2}
 .experience-zoom:after{content:"Click to enlarge";position:absolute;right:12px;bottom:12px;background:rgba(9,9,9,.82);border:1px solid rgba(255,255,255,.34);color:#fff;padding:8px 10px;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;pointer-events:none}
 .image-lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.92);padding:24px}
 .image-lightbox.open{display:flex}
@@ -29,7 +34,7 @@ nav{position:relative}.event-hero{padding:70px 0 45px}.event-hero h1{font-size:c
 <figure><img class="event-photo" loading="lazy" src="/assets/live-cardano-event.jpg" width="1400" height="1050" alt="Two freestanding mural panels at a Cardano convention with the BLVD pink bird mural on the right"><figcaption>Cardano convention setup — BLVD’s pink bird mural on the right; neighboring artwork by @erk_ross on the left.</figcaption></figure>
 </div><figure><div class="event-video-shell"><video id="live-event-video" playsinline preload="metadata" aria-label="Live event painting video"><source src="/assets/live-event-painting.mp4" type="video/mp4">Your browser does not support embedded video. <a href="/assets/live-event-painting.mp4">Watch the live painting video.</a></video><button class="event-video-cover" type="button" aria-label="Play live event painting video"><span class="event-video-kicker">Live event painting</span><span class="event-video-title">Watch Live Painting in Action</span><span class="event-video-play" aria-hidden="true">▶</span></button></div><figcaption>Live event painting — a look at the process and atmosphere.</figcaption></figure></div></section>
 <section class="event-section" id="experiences"><div class="wrap"><div class="eyebrow">Three interactive live-art experiences</div><h2>Make the artwork part of the event.</h2><div class="event-grid three">
-<article class="event-card"><button class="experience-zoom" type="button" data-title="Take-Home Canvas Wall" aria-label="Enlarge Take-Home Canvas Wall image"><img class="event-photo" loading="lazy" src="/assets/live-painting-take-home-fixed.svg" width="1536" height="1024" alt="Concept mockup of an eight-foot freestanding live mural made from individual take-home canvases"></button><h3>Take-Home Canvas Wall</h3><p>An 8 × 8 ft freestanding wall is covered with individual 1 × 1 ft canvases and painted live as one connected mural. At the end of the event, guests take home a piece of the larger artwork.</p><p class="event-copy">Ideal for brand activations, conferences, festivals, corporate events, and guest gifting.</p></article>
+<article class="event-card"><button class="experience-zoom" type="button" data-title="Take-Home Canvas Wall" aria-label="Enlarge Take-Home Canvas Wall image"><span class="take-home-composite" role="img" aria-label="Concept mockup of an eight-foot freestanding live mural made from individual take-home canvases"><img class="take-home-base" loading="lazy" src="https://static.wixstatic.com/media/cd8292_76667f92ca8345ff9eaef3d21af0d1b3~mv2.png" width="1536" height="1024" alt=""><img class="take-home-patch" loading="lazy" src="https://static.wixstatic.com/media/cd8292_d98dbafcbf1d475a8e62db9f937eee57~mv2.png" width="1264" height="843" alt=""></span></button><h3>Take-Home Canvas Wall</h3><p>An 8 × 8 ft freestanding wall is covered with individual 1 × 1 ft canvases and painted live as one connected mural. At the end of the event, guests take home a piece of the larger artwork.</p><p class="event-copy">Ideal for brand activations, conferences, festivals, corporate events, and guest gifting.</p></article>
 <article class="event-card"><button class="experience-zoom" type="button" data-title="Wedding Guest Canvas" aria-label="Enlarge Wedding Guest Canvas image"><img class="event-photo" loading="lazy" src="https://static.wixstatic.com/media/cd8292_86490ffd23ed4e97b9cb726d52a0e283~mv2.png" width="1536" height="1024" alt="Concept mockup of a vertical wedding guest-signature canvas with bluebonnets and a butterfly"></button><h3>Wedding Guest Canvas</h3><p>A vertical freestanding canvas receives light live-painted artwork while guests add their signatures throughout the celebration. After the event, the canvas can be removed, stretched, and framed as a finished wall piece for the couple.</p><p class="event-copy">A guest-book alternative that becomes original artwork for the home.</p></article>
 <article class="event-card"><button class="experience-zoom" type="button" data-title="Collaborative Color-In Mural" aria-label="Enlarge Collaborative Color-In Mural image"><img class="event-photo" loading="lazy" src="/assets/live-painting-make-your-mark.webp" alt="Concept mockup of a collaborative color-in mural experience"></button><h3>Collaborative Color-In Mural</h3><p>BLVD prepares the composition and guests help bring it to life by painting designated areas. Jay guides participation and completes the finishing work so the final piece still reads as a polished mural.</p><p class="event-copy">Built for teams, conferences, celebrations, and interactive brand experiences.</p></article>
 </div><p class="event-copy">Concept mockups shown above illustrate the experience formats. Artwork, dimensions, colors, branding, and guest participation are customized for each event.</p></div></section>
@@ -64,12 +69,25 @@ function closeExperienceLightbox(){
 }
 document.querySelectorAll('.experience-zoom').forEach(button=>{
   button.addEventListener('click',()=>{
-    const img=button.querySelector('img');
-    if(!img||!experienceLightbox||!lightboxImage)return;
+    if(!experienceLightbox||!lightboxImage)return;
+    const composite=button.querySelector('.take-home-composite');
+    const existingClone=experienceLightbox.querySelector('.lightbox-composite');
+    if(existingClone)existingClone.remove();
     lastZoomTrigger=button;
-    lightboxImage.src=img.currentSrc||img.src;
-    lightboxImage.alt=img.alt;
-    if(lightboxLabel)lightboxLabel.textContent=button.dataset.title||img.alt;
+    if(composite){
+      lightboxImage.hidden=true;
+      const clone=composite.cloneNode(true);
+      clone.classList.add('lightbox-composite');
+      lightboxImage.parentNode.insertBefore(clone,lightboxLabel);
+      if(lightboxLabel)lightboxLabel.textContent=button.dataset.title||composite.getAttribute('aria-label')||'';
+    }else{
+      const img=button.querySelector('img');
+      if(!img)return;
+      lightboxImage.hidden=false;
+      lightboxImage.src=img.currentSrc||img.src;
+      lightboxImage.alt=img.alt;
+      if(lightboxLabel)lightboxLabel.textContent=button.dataset.title||img.alt;
+    }
     experienceLightbox.classList.add('open');
     experienceLightbox.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
